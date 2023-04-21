@@ -42,7 +42,7 @@ public class CarritoController {
             Articulo articulo = articuloService.getArticulo(item);
             item2 = new Item(articulo);
         }
-        itemService.save(item2);
+itemService.save(item2);
         var lista = itemService.gets();
         var totalCarritos = 0;
         var carritoTotalVenta = 0;
@@ -77,7 +77,7 @@ public class CarritoController {
         itemService.actualiza(item);
         return "redirect:/carrito/listado";
     }
-    
+
     //Para facturar los articulos del carrito... no implementado...
     @GetMapping("/facturar/carrito")
     public String facturarCarrito() {

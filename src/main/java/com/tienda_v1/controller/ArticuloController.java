@@ -19,8 +19,9 @@ public class ArticuloController {
     
     @GetMapping("/listado")
     public String inicio(Model model){
-        var articulo=articuloService.getArticulos();
-        model.addAttribute("articulos",articulo);
+        var articulo=articuloService.getArticulos(false);
+        model.addAttribute("articulos", articulo);
+        model.addAttribute("totalArticulos",articulo.size());
         return "/articulo/listado";
     }
     
@@ -47,5 +48,5 @@ public class ArticuloController {
         model.addAttribute("articulo", articulo);
         return "/articulo/modifica";
     }
-     
+    
 }

@@ -1,4 +1,4 @@
-package com.tienda_v1
+package com.tienda_v1;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

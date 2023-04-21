@@ -8,19 +8,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class ArticuloServiceImpl implements ArticuloService {
+public class ArticuloServiceImpl1 implements ArticuloService {
+    
     //Esto crea una unica copia de un objeto
     @Autowired
     private ArticuloDao articuloDao;
     
     @Override
-    public List<Articulo> getArticulos(){
-        return (List<Articulo>)articuloDao.findAll();
+    public List<Articulo> getArticulos(boolean activos){
+        var lista=(List<Articulo>) articuloDao.findAll();
+        if (activos){
+            lista.removeIf(e -> !e.isActivo());
+        }
+        return lista;
     }
 
     @Override
     public Articulo getArticulo(Articulo articulo) {
-    return articuloDao.findById(articulo.getIdArticulo()).orElse(null);
+        return articuloDao.findById(articulo.getIdArticulo()).orElse(null);
     }
 
     @Override
@@ -32,4 +37,5 @@ public class ArticuloServiceImpl implements ArticuloService {
     public void saveArticulo(Articulo articulo) {
         articuloDao.save(articulo);
     }
+    
 }

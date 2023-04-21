@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/%22%3E">
+<html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
+        
         <section th:replace="~{cliente/fragmentos :: botonesAgregar}"/>
-        <section th:replace="~{cliente/fragmentos :: agregarCliente}"/> 
-        <section th:replace="~{cliente/fragmentos :: listadoClientes}"/>  
-        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+        <section th:replace="~{cliente/fragmentos :: agregarCliente}"/>
+
+        <section th:replace="~{cliente/fragmentos :: listadoClientes}"/>
+
+        <footer th :replace="~{layout/plantilla :: footer}">
+       
     </body>
 </html>

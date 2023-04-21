@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
+    
     //Esto crea una unica copia de un objeto
     @Autowired
     private CategoriaDao categoriaDao;
@@ -16,17 +17,15 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     public List<Categoria> getCategorias(boolean activos){
         var lista=(List<Categoria>) categoriaDao.findAll();
-        
-        if(activos){
-            lista.removeIf(o -> !O.isActivo());
+        if (activos){
+            lista.removeIf(e -> !e.isActivo());
         }
-        
-        return (List<Categoria>) categoriaDao.findAll();
+        return lista;
     }
 
     @Override
     public Categoria getCategoria(Categoria categoria) {
-    return categoriaDao.findById(categoria.getIdCategoria()).orElse(null);
+        return categoriaDao.findById(categoria.getIdCategoria()).orElse(null);
     }
 
     @Override
@@ -38,4 +37,5 @@ public class CategoriaServiceImpl implements CategoriaService {
     public void saveCategoria(Categoria categoria) {
         categoriaDao.save(categoria);
     }
+    
 }
